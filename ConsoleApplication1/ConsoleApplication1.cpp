@@ -6,16 +6,16 @@
 
 int main()
 {
-    Vec3* a = new Vec3();
-    Vec3* b = new Vec3(1, 0, 1);
-    Vec3* c = b;
-    Vec3* d = b + c;
+    Vec3<int> a;
+    Vec3<int> b (1,0,1);
+    Vec3<int> c (b);
+    Vec3<int> d = b + c;
 
-    printf(d.normalize());
-    printf(d.distance_to(b));
-    printf(d.dot_product(b));
-    printf(d.cross_product(b));
-    printf(d.angle_between(b));
+    std::cout << "Normalize:" + d.normalize() << std::endl;
+    std::cout << "Distance to:" +  d.distance_to(b) << std::endl;
+    std::cout << "Dot Product:" + d.dot_product(b) << std::endl;
+    std::cout << "Cross Product:" + d.cross_product(b) << std::endl;
+    std::cout << "Angle Between:" + d.angle_between(b) << std::endl;
 
 
 }
