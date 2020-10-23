@@ -18,20 +18,23 @@ class Vec3
 			this.z = vector.z;
 		}
 
+		// Operatior +
+
+
 		// METHODS
-		int normalize() {
-		
+		inline E normalize() {
+			return 
 		}
-		int distance_to(const Vec3& vector) {
-		
+		inline E distance_to(const Vec3& vector) {
+			return
 		}
-		int dot_product(const Vec3& vector) {
-		
+		inline E dot_product(const Vec3& vector) {
+			return
 		}
-		int cross_product(const Vec3& vector) {
-		
+		inline E cross_product(const Vec3& vector) {
+			return
 		}
-		float angle_between(const Vec3& vector) {
+		inline E angle_between(const Vec3& vector) {
 		
 		}
 
