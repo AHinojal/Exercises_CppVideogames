@@ -11,11 +11,11 @@ int main()
     Vec3<int> c (b);
     Vec3<int> d = b + c;
 
-    std::cout << "Normalize:" + d.normalize() << std::endl;
-    std::cout << "Distance to:" +  d.distance_to(b) << std::endl;
-    std::cout << "Dot Product:" + d.dot_product(b) << std::endl;
-    std::cout << "Cross Product:" + d.cross_product(b) << std::endl;
-    std::cout << "Angle Between:" + d.angle_between(b) << std::endl;
+    std::cout << "Normalize: " << d.normalize() << std::endl;
+    std::cout << "Distance to: " <<  d.distance_to(b) << std::endl;
+    std::cout << "Dot Product: " << d.dot_product(b) << std::endl;
+    std::cout << "Cross Product: " << d.cross_product(b) << std::endl;
+    std::cout << "Angle Between: " << d.angle_between(b) << std::endl;
 
 
 }
