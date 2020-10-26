@@ -11,6 +11,10 @@ int main()
     Vec3<int> c (b);
     Vec3<int> d = b + c;
 
+    std::cout << "VECTOR A: " << a << std::endl;
+    std::cout << "VECTOR B: " << b << std::endl;
+    std::cout << "VECTOR C: " << c << std::endl;
+    std::cout << "VECTOR D: " << d << std::endl;
     std::cout << "Normalize: " << d.normalize() << std::endl;
     std::cout << "Distance to: " <<  d.distance_to(b) << std::endl;
     std::cout << "Dot Product: " << d.dot_product(b) << std::endl;
