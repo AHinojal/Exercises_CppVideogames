@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{c9098225-cae7-44db-9d5a-67e165a23bc7}</ProjectGuid>
+    <ProjectGuid>{8e53ee99-804b-4ef9-9346-312193e14634}</ProjectGuid>
     <RootNamespace>My02StringClass</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -140,6 +140,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="02_StringClass.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Str.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

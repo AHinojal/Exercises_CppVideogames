@@ -2,10 +2,22 @@
 //
 
 #include <iostream>
+#include "Str.h"
 
-int main()
-{
-    std::cout << "Hello World!\n";
+int main() {
+
+	Str a("hello");
+	Str b(a);
+	Str c = a + b;
+
+	if (c == "hellohello") {
+
+	}
+
+	std::cout << "Longitud C: " << d.length() << std::endl;
+	c.clear();
+
+	Str z = GetMeAString();
 }
 
 // Ejecutar programa: Ctrl + F5 o menú Depurar > Iniciar sin depurar
