@@ -50,7 +50,7 @@ update_status ModuleRender::PreUpdate()
 	SDL_GetWindowSize(App->window->window, NULL, NULL);
 
 	// Borramos el buffer de color
-	glClearColor(1.0f, 0.1f, 0.1f, 1.0f);
+	glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	return UPDATE_CONTINUE;
 }
@@ -58,7 +58,12 @@ update_status ModuleRender::PreUpdate()
 // Called every draw update
 update_status ModuleRender::Update()
 {
-
+	glBegin(GL_TRIANGLES);
+		glColor3f(1.0, 0.0, 0.0);
+		glVertex2f(0, 0.5); // v1
+		glVertex2f(-0.25, 0); // v2
+		glVertex2f(0.25, 0); // v3
+	glEnd();
 	return UPDATE_CONTINUE;
 }
 
