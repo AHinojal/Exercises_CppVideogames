@@ -17,6 +17,7 @@ ModuleRender::~ModuleRender()
 // Called before render is available
 bool ModuleRender::Init()
 {
+	// OPENGL INITIALIZATION
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4); // desired version
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 6);
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_COMPATIBILITY);
@@ -24,9 +25,7 @@ bool ModuleRender::Init()
 	SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24); // we want to have a depth buffer with 24 bits
 	SDL_GL_SetAttribute(SDL_GL_STENCIL_SIZE, 8); // we want to have a stencil buffer with 8 bits 
 
-	// OPENGL INITIALIZATION
-
-	// Creating Renderer
+	// Creating Renderer CONTEXT
 	LOG("Creating Renderer context");
 	context = SDL_GL_CreateContext(App->window->window);
 
@@ -47,9 +46,9 @@ bool ModuleRender::Init()
 
 update_status ModuleRender::PreUpdate()
 {
+	// OpenGL Frame Init
 	SDL_GetWindowSize(App->window->window, NULL, NULL);
-
-	// Borramos el buffer de color
+	// Deleting color's buffer 
 	glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	return UPDATE_CONTINUE;
@@ -58,17 +57,20 @@ update_status ModuleRender::PreUpdate()
 // Called every draw update
 update_status ModuleRender::Update()
 {
+	// Testing: Draw some geometry 
 	glBegin(GL_TRIANGLES);
 		glColor3f(1.0, 0.0, 0.0);
 		glVertex2f(0, 0.5); // v1
 		glVertex2f(-0.25, 0); // v2
 		glVertex2f(0.25, 0); // v3
 	glEnd();
+
 	return UPDATE_CONTINUE;
 }
 
 update_status ModuleRender::PostUpdate()
 {
+	// OpenGL Frame Init
 	SDL_GL_SwapWindow(App->window->window);
 
 	return UPDATE_CONTINUE;
