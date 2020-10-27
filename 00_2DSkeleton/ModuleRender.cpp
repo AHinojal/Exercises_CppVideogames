@@ -35,13 +35,28 @@ bool ModuleRender::Init()
 	return ret;
 }
 
+// TODO 5: Now that we have PreUpdate/PostUpdate/Update move things around so we can render
+
+update_status ModuleRender::PreUpdate()
+{
+	/* Select the color for drawing. It is set to red here. */
+	SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+	
+	SDL_RenderClear(renderer);
+
+	return UPDATE_CONTINUE;
+}
+
 // Called every draw update
 update_status ModuleRender::Update()
 {
-	SDL_RenderClear(renderer);
 
-	// TODO 5: Now that we have PreUpdate/PostUpdate/Update move things around so we can render
+	return UPDATE_CONTINUE;
+}
 
+// Called every draw update
+update_status ModuleRender::PostUpdate()
+{
 	SDL_RenderPresent(renderer);
 	return UPDATE_CONTINUE;
 }
