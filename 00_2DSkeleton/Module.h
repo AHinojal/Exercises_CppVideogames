@@ -20,7 +20,19 @@ public:
 		return true;
 	}
 
+
+	// TODO 4: We need to have three updates, add them: PreUpdate Update PostUpdate
+	virtual update_status PreUpdate()
+	{
+		return UPDATE_CONTINUE;
+	}
+
 	virtual update_status Update()
+	{
+		return UPDATE_CONTINUE;
+	}
+
+	virtual update_status PostUpdate()
 	{
 		return UPDATE_CONTINUE;
 	}
