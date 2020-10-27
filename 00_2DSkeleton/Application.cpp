@@ -4,6 +4,7 @@
 #include "ModuleRender.h"
 #include "ModuleTextures.h"
 #include "ModuleInput.h"
+#include "ModuleScene.h"
 
 using namespace std;
 
@@ -14,9 +15,8 @@ Application::Application()
 	modules.push_back(renderer = new ModuleRender());
 	modules.push_back(textures = new ModuleTextures());
 	modules.push_back(input = new ModuleInput());
-
 	// TODO 7: Create a new "scene" module that loads a texture and draws it on the screen
-
+	modules.push_back(scene = new ModuleScene());
 }
 
 Application::~Application()
