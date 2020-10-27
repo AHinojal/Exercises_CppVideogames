@@ -31,9 +31,12 @@ bool Application::Init()
 	for(list<Module*>::iterator it = modules.begin(); it != modules.end() && ret; ++it)
 		ret = (*it)->Init();
 
+	// TODO 3: Create a new method "Start()" that should be called for all modules just before the first frame
+	for (list<Module*>::iterator it = modules.begin(); it != modules.end() && ret; ++it)
+		ret = (*it)->Start();
+
 	return ret;
 }
-
 
 update_status Application::Update()
 {
