@@ -39,7 +39,10 @@ ModuleSceneKen::ModuleSceneKen(bool start_enabled) : Module(start_enabled)
 	flag.speed = 0.08f;
 
 	// TODO 4: Setup Girl Animation from coordinates from ken_stage.png
-
+	girl.frames.push_back({ 624, 16, 32, 56 });
+	girl.frames.push_back({ 624, 80, 32, 56 });
+	girl.frames.push_back({ 624, 144, 32, 56 });
+	girl.speed = 0.08f;
 }
 
 ModuleSceneKen::~ModuleSceneKen()
@@ -85,7 +88,7 @@ update_status ModuleSceneKen::Update()
 	// TODO 3: Draw the ship. Be sure to tweak the speed.
 	App->renderer->Blit(graphics, 0, 0, &redShip, 2.0f); // redShip
 	// TODO 6: Draw the girl. Make sure it follows the ship movement!
-	
+	App->renderer->Blit(graphics, 192, 105, &(girl.GetCurrentFrame()), 2.0f); // flag animation
 	App->renderer->Blit(graphics, 0, 170, &ground);
 
 	// TODO 10: Build an entire new scene "honda", you can find its

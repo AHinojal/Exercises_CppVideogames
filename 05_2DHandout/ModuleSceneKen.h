@@ -25,6 +25,7 @@ public:
 	SDL_Rect background;
 	SDL_Rect redShip;
 	Animation flag;
+	Animation girl;
 };
 
 #endif // __MODULESCENEKEN_H__
