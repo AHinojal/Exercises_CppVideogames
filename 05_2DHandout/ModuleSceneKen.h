@@ -6,6 +6,7 @@
 #include "Globals.h"
 
 struct SDL_Texture;
+typedef struct _Mix_Music Mix_Music;
 
 class ModuleSceneKen : public Module
 {
@@ -22,6 +23,7 @@ public:
 	SDL_Texture* graphics = nullptr;
 	SDL_Rect ground;
 	SDL_Rect background;
+	SDL_Rect redShip;
 	Animation flag;
 };
 

@@ -21,6 +21,11 @@ ModuleSceneKen::ModuleSceneKen(bool start_enabled) : Module(start_enabled)
 
 	// TODO 2 : setup the foreground (red ship) with
 	// coordinates x,y,w,h from ken_stage.png
+	redShip.x = 0;
+	redShip.y = 0;
+	redShip.w = 0;
+	redShip.h = 0;
+
 
 	// Background / sky
 	background.x = 72;
@@ -50,6 +55,7 @@ bool ModuleSceneKen::Start()
 
 	// TODO 7: Enable the player module
 	// TODO 0: trigger background music
+	App->audio->PlayMusic("ken.ogg");
 	
 	return true;
 }
@@ -72,8 +78,10 @@ update_status ModuleSceneKen::Update()
 
 	// Draw everything --------------------------------------
 	// TODO 1: Tweak the parallax movement speed of the sea&sky + flag to your taste
-	App->renderer->Blit(graphics, 0, 0, &background, 1.0f); // sea and sky
-	App->renderer->Blit(graphics, 560, 8, &(flag.GetCurrentFrame()), 1.0f); // flag animation
+	// To modify the speed, you have to change the forth parameter
+	// (In this case, has to be the same speed in both texture, because if you put different speeds, the flag goes to shit)
+	App->renderer->Blit(graphics, 0, 0, &background, 2.0f); // sea and sky
+	App->renderer->Blit(graphics, 560, 8, &(flag.GetCurrentFrame()), 2.0f); // flag animation
 
 	// TODO 3: Draw the ship. Be sure to tweak the speed.
 
