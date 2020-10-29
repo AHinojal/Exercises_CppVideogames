@@ -37,9 +37,9 @@ bool ModuleRender::Init()
 	LOG("OpenGL version supported %s", glGetString(GL_VERSION));
 	LOG("GLSL: %s\n", glGetString(GL_SHADING_LANGUAGE_VERSION));
 
-	glEnable(GL_DEPTH_TEST); // Enable depth test
-	glEnable(GL_CULL_FACE); // Enable cull backward faces
-	glFrontFace(GL_CCW); // Front faces will be counter clockwise
+	//glEnable(GL_DEPTH_TEST); // Enable depth test
+	//glEnable(GL_CULL_FACE); // Enable cull backward faces
+	//glFrontFace(GL_CCW); // Front faces will be counter clockwise
 
 	return true;
 }
@@ -51,20 +51,13 @@ update_status ModuleRender::PreUpdate()
 	// Deleting color's buffer 
 	glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
 	return UPDATE_CONTINUE;
 }
 
 // Called every draw update
 update_status ModuleRender::Update()
 {
-	// Testing: Draw some geometry 
-	glBegin(GL_TRIANGLES);
-		glColor3f(1.0, 0.0, 0.0);
-		glVertex2f(0, 0.5); // v1
-		glVertex2f(-0.25, 0); // v2
-		glVertex2f(0.25, 0); // v3
-	glEnd();
-
 	return UPDATE_CONTINUE;
 }
 

@@ -20,3 +20,4 @@ enum update_status
 #define WINDOW_RESIZABLE true
 #define VSYNC true
 #define TITLE "Super Awesome Engine"
+#define DEGTORAD(angleDegrees) ((angleDegrees) * M_PI / 180.0)
