@@ -23,9 +23,16 @@ public:
 	SDL_Texture* graphics = nullptr;
 	SDL_Rect ground;
 	SDL_Rect background;
+	//iPoint moveUpDownShip;
 	SDL_Rect redShip;
 	Animation flag;
 	Animation girl;
+	Animation gangtersGuys;
+	Animation boy;
+	Animation richGuy;
+	Animation brownGuy;
+	Animation purpleGuy;
+
 };
 
 #endif // __MODULESCENEKEN_H__

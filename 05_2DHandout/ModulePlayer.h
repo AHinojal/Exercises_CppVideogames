@@ -7,6 +7,7 @@
 #include "Point.h"
 
 struct SDL_Texture;
+struct SDL_Rect;
 
 class ModulePlayer : public Module
 {
@@ -21,8 +22,10 @@ public:
 public:
 
 	SDL_Texture* graphics = nullptr;
+	SDL_Rect ryu;
 	Animation idle;
 	Animation backward;
+	Animation forward;
 	iPoint position;
 };
 
