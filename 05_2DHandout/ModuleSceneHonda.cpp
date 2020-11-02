@@ -1,7 +1,7 @@
 #include "Globals.h"
 #include "Application.h"
-#include "ModuleSceneKen.h"
 #include "ModuleSceneHonda.h"
+#include "ModuleSceneKen.h"
 #include "ModuleRender.h"
 #include "ModuleTextures.h"
 #include "ModulePlayer.h"
@@ -10,9 +10,7 @@
 #include "ModuleFadeToBlack.h"
 #include "SDL/include/SDL.h"
 
-// Reference at https://youtu.be/OEhmUuehGOA?t=72
-
-ModuleSceneKen::ModuleSceneKen(bool start_enabled) : Module(start_enabled)
+ModuleSceneHonda::ModuleSceneHonda(bool start_enabled) : Module(start_enabled)
 {
 	// ground
 	ground.x = 8;
@@ -34,9 +32,9 @@ ModuleSceneKen::ModuleSceneKen(bool start_enabled) : Module(start_enabled)
 	background.h = 176;
 
 	// flag animation
-	flag.frames.push_back({848, 208, 40, 40});
-	flag.frames.push_back({848, 256, 40, 40});
-	flag.frames.push_back({848, 304, 40, 40});
+	flag.frames.push_back({ 848, 208, 40, 40 });
+	flag.frames.push_back({ 848, 256, 40, 40 });
+	flag.frames.push_back({ 848, 304, 40, 40 });
 	flag.speed = 0.08f;
 
 	// OK -- TODO 4: Setup Girl Animation from coordinates from ken_stage.png
@@ -71,37 +69,37 @@ ModuleSceneKen::ModuleSceneKen(bool start_enabled) : Module(start_enabled)
 	purpleGuy.speed = 0.08f;
 }
 
-ModuleSceneKen::~ModuleSceneKen()
+ModuleSceneHonda::~ModuleSceneHonda()
 {}
 
 // Load assets
-bool ModuleSceneKen::Start()
+bool ModuleSceneHonda::Start()
 {
-	LOG("Loading ken scene");
-	
-	graphics = App->textures->Load("ken_stage.png");
+	LOG("Loading honda scene");
+
+	graphics = App->textures->Load("honda_stage.png");
 
 	// OK -- TODO 7: Enable the player module
 	App->player->Enable();
 	// OK -- TODO 0: trigger background music
-	App->audio->PlayMusic("ken.ogg");
-	
+	App->audio->PlayMusic("honda.ogg");
+
 	return true;
 }
 
 // UnLoad assets
-bool ModuleSceneKen::CleanUp()
+bool ModuleSceneHonda::CleanUp()
 {
-	LOG("Unloading ken scene");
+	LOG("Unloading honda scene");
 
 	App->textures->Unload(graphics);
 	App->player->Disable();
-	
+
 	return true;
 }
 
 // Update: draw background
-update_status ModuleSceneKen::Update()
+update_status ModuleSceneHonda::Update()
 {
 	// TODO 5: make sure the ship goes up and down
 
@@ -129,7 +127,8 @@ update_status ModuleSceneKen::Update()
 
 	// TODO 11: Make that pressing space triggers a switch to honda logic module
 	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_REPEAT) {
-		App->fade->FadeToBlack(App->scene_honda, App->scene_ken, 3.0f);
+		LOG("PRESSING SPACE");
+		App->fade->FadeToBlack(App->scene_ken, App->scene_honda, 3.0f);
 	}
 	// using FadeToBlack module
 
