@@ -27,6 +27,9 @@ ModuleSceneKen::ModuleSceneKen(bool start_enabled) : Module(start_enabled)
 	redShip.w = 523;
 	redShip.h = 181;
 
+	moveRedShip.x = 0;
+	moveRedShip.y = -3;
+
 	// Background / sky
 	background.x = 72;
 	background.y = 208;
@@ -103,31 +106,43 @@ bool ModuleSceneKen::CleanUp()
 // Update: draw background
 update_status ModuleSceneKen::Update()
 {
-	// TODO 5: make sure the ship goes up and down
-
-	// Draw everything --------------------------------------
+	// --------------------------------- Draw everything --------------------------------------
 	// OK -- TODO 1: Tweak the parallax movement speed of the sea&sky + flag to your taste
 	// To modify the speed, you have to change the forth parameter
 	// (In this case, has to be the same speed in both texture, because if you put different speeds, the flag goes to shit)
 	App->renderer->Blit(graphics, 0, 0, &background, 2.0f); // sea and sky
 	App->renderer->Blit(graphics, 560, 8, &(flag.GetCurrentFrame()), 2.0f); // flag animation
 
+	// OK (CAN IMPROVE) -- TODO 5: make sure the ship goes up and down
+	if (endRedShip) {
+		--moveRedShip.y;
+		if (moveRedShip.y == -6) {
+			endRedShip = false;
+		}
+	}
+	else {
+		++moveRedShip.y;
+		if (moveRedShip.y == 0) {
+			endRedShip = true;
+		}
+	}
+	
 	// OK -- TODO 3: Draw the ship. Be sure to tweak the speed.
-	App->renderer->Blit(graphics, 0, 0, &redShip, 2.0f); // redShip
+	App->renderer->Blit(graphics, moveRedShip.x, moveRedShip.y, &redShip, 2.0f); // redShip
 	// OK -- TODO 6: Draw the girl. Make sure it follows the ship movement!
-	App->renderer->Blit(graphics, 192, 105, &(girl.GetCurrentFrame()), 2.0f); // girl animation
+	App->renderer->Blit(graphics, 192, 105 + moveRedShip.y, &(girl.GetCurrentFrame()), 2.0f); // girl animation
 	// OK -- TODO 6.2: Draw the other NPC in the ship. Make sure it follows the ship movement!
-	App->renderer->Blit(graphics, 128, 105, &(gangtersGuys.GetCurrentFrame()), 2.0f); // gansters animation
-	App->renderer->Blit(graphics, 224, 105, &(boy.GetCurrentFrame()), 2.0f); // boy animation
-	App->renderer->Blit(graphics, 288, 97, &(richGuy.GetCurrentFrame()), 2.0f); // richGuy animation
-	App->renderer->Blit(graphics, 88, 25, &(brownGuy.GetCurrentFrame()), 2.0f); // brownGuy animation
-	App->renderer->Blit(graphics, 128, 25, &(purpleGuy.GetCurrentFrame()), 2.0f); // purpleGuy animation
+	App->renderer->Blit(graphics, 128, 105 + moveRedShip.y, &(gangtersGuys.GetCurrentFrame()), 2.0f); // gansters animation
+	App->renderer->Blit(graphics, 224, 105 + moveRedShip.y, &(boy.GetCurrentFrame()), 2.0f); // boy animation
+	App->renderer->Blit(graphics, 288, 97 + moveRedShip.y, &(richGuy.GetCurrentFrame()), 2.0f); // richGuy animation
+	App->renderer->Blit(graphics, 88, 25 + moveRedShip.y, &(brownGuy.GetCurrentFrame()), 2.0f); // brownGuy animation
+	App->renderer->Blit(graphics, 128, 25 + moveRedShip.y, &(purpleGuy.GetCurrentFrame()), 2.0f); // purpleGuy animation
 	App->renderer->Blit(graphics, 0, 170, &ground);
 
-	// TODO 10: Build an entire new scene "honda", you can find its
+	// OK -- TODO 10: Build an entire new scene "honda", you can find its
 	// and music in the Game/ folder
 
-	// TODO 11: Make that pressing space triggers a switch to honda logic module
+	// OK -- TODO 11: Make that pressing space triggers a switch to honda logic module
 	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_REPEAT) {
 		App->fade->FadeToBlack(App->scene_honda, App->scene_ken, 3.0f);
 	}

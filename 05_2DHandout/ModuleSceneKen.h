@@ -4,6 +4,7 @@
 #include "Module.h"
 #include "Animation.h"
 #include "Globals.h"
+#include "Point.h"
 
 struct SDL_Texture;
 typedef struct _Mix_Music Mix_Music;
@@ -23,7 +24,8 @@ public:
 	SDL_Texture* graphics = nullptr;
 	SDL_Rect ground;
 	SDL_Rect background;
-	//iPoint moveUpDownShip;
+	iPoint moveRedShip;
+	bool endRedShip = false;
 	SDL_Rect redShip;
 	Animation flag;
 	Animation girl;

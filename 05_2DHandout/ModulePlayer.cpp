@@ -7,14 +7,9 @@
 #include "SDL/include/SDL.h"
 
 // Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
+
 ModulePlayer::ModulePlayer(bool start_enabled) : Module(start_enabled)
 {
-	// Draw static Ryu
-	/*ryu.x = 8;
-	ryu.y = 14;
-	ryu.w = 58;
-	ryu.h = 90;*/
-
 	position.x = 50; //100
 	position.y = 108; //216
 
@@ -73,13 +68,18 @@ bool ModulePlayer::CleanUp()
 // Update
 update_status ModulePlayer::Update()
 {
-	// TODO 9: Draw the player with its animation
+	// OK (CAN IMPROVE) -- TODO 9: Draw the player with its animation
 	// make sure to detect player movement and change its
 	// position while cycling the animation(check Animation.h)
-	//App->renderer->Blit(graphics, position.x, position.y, &(idle.GetCurrentFrame()), 2.0f); // static ryu
-	// App->renderer->Blit(graphics, position.x, position.y, &(backward.GetCurrentFrame()), 2.0f); // backward ryu
-	App->renderer->Blit(graphics, position.x, position.y, &(forward.GetCurrentFrame()), 2.0f); // forward ryu
-
+	if (App->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT) {
+		App->renderer->Blit(graphics, ++position.x, position.y, &(forward.GetCurrentFrame()), 2.0f); // forward ryu
+	}
+	else if (App->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT) {
+		App->renderer->Blit(graphics, --position.x, position.y, &(backward.GetCurrentFrame()), 2.0f); // backward ryu
+	}
+	else {
+		App->renderer->Blit(graphics, position.x, position.y, &(idle.GetCurrentFrame()), 2.0f); // static ryu
+	}
 
 	return UPDATE_CONTINUE;
 }

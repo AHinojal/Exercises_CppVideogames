@@ -125,7 +125,7 @@ update_status ModuleSceneHonda::Update()
 	// TODO 10: Build an entire new scene "honda", you can find its
 	// and music in the Game/ folder
 
-	// TODO 11: Make that pressing space triggers a switch to honda logic module
+	// OK -- TODO 11: Make that pressing space triggers a switch to honda logic module
 	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_REPEAT) {
 		LOG("PRESSING SPACE");
 		App->fade->FadeToBlack(App->scene_ken, App->scene_honda, 3.0f);
